@@ -41,10 +41,10 @@ import okhttp3.RequestBody;
 
 public class AdminPage extends AppCompatActivity {
 
-    final private String mapbox_api_key = "";
-    final private String accuweather_api_key = "";
-    final private String data_api_key = "";
-    final private String data_app_id = "";
+    final private String mapbox_api_key = "pk.eyJ1Ijoic29uYW1zaW5naDI1IiwiYSI6ImNsMGZrYTE0ajB0aGczZGxmZW5ha2F6YncifQ.BohJ7FLeqa2EOdPSqs3RAw";
+    final private String accuweather_api_key = "8kQdPPmGyBEyksP57PE0Y3NmUbIBQOpc";
+    final private String data_api_key = "nZhvEJPC6yO5a8ZJfqY7rlOupHAOgaqFnfOfO2G3ppIEzjnbeXWmdJjtmGGOs1T0";
+    final private String data_app_id = "data-pjzvj";
     String lat = null, lon = null, name = null;
 
     @Override
@@ -255,7 +255,7 @@ public class AdminPage extends AppCompatActivity {
         Log.i("message", formattedData);
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n    \"collection\":\"weather_data\",\n    \"database\":\"rain_meter_data\",\n    \"dataSource\":\"Cluster0\",\n    \"document\": "+formattedData+"\n\n}");
+        RequestBody body = RequestBody.create(mediaType, "{\n    \"collection\":\"weather_data\",\n    \"database\":\"rain_meter_data\",\n    \"dataSource\":\"RainCheckCluster\",\n    \"document\": "+formattedData+"\n\n}");
         okhttp3.Request request = new okhttp3.Request.Builder()
                 .url("https://data.mongodb-api.com/app/"+data_app_id+"/endpoint/data/beta/action/insertOne")
                 .method("POST", body)

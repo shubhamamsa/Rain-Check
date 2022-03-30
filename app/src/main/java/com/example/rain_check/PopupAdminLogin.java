@@ -93,7 +93,7 @@ public class PopupAdminLogin extends Activity {
             String username = edtUsername.getText().toString();
             String password = edtPassword.getText().toString();
 
-            if(username.equals("") && password.equals("")) {
+            if(username.equals("admin") && password.equals("password")) {
                 Intent adminArea = new Intent(context, AdminPage.class);
                 context.startActivity(adminArea);
                 finish();
