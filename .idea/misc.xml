@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Shubham/OneDrive/Documents/AndroidProjects/RainCheck/app/src/main/res/layout/activity_admin_page.xml" value="0.1" />
+        <entry key="..\:/Users/Shubham/OneDrive/Documents/AndroidProjects/RainCheck/app/src/main/res/layout/activity_select_city.xml" value="0.1" />
+        <entry key="..\:/Users/Shubham/OneDrive/Documents/AndroidProjects/RainCheck/app/src/main/res/layout/pop_up_admin_login_layout.xml" value="0.2" />
+        <entry key="..\:/Users/Shubham/OneDrive/Documents/AndroidProjects/RainCheck/app/src/main/res/layout/pop_up_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/cloudy_gradient.xml" value="0.16776315789473684" />
+        <entry key="app/src/main/res/drawable/ic_sun.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/rect_border.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/rel_bg_border.xml" value="0.2348684210526316" />
+        <entry key="app/src/main/res/drawable/sunny_gradient.xml" value="0.2348684210526316" />
+        <entry key="app/src/main/res/drawable/temperature_gradient.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/textbox_border.xml" value="0.3575" />
+        <entry key="app/src/main/res/font/gudea.xml" value="0.1700657894736842" />
+        <entry key="app/src/main/res/font/test.xml" value="0.1700657894736842" />
+        <entry key="app/src/main/res/layout/activity_launcher.xml" value="0.225" />
+        <entry key="app/src/main/res/layout/activity_select_city.xml" value="0.29483695652173914" />
+        <entry key="app/src/main/res/layout/activity_weather_description.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/pop_up_admin_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/pop_up_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/simple_list_item.xml" value="0.225" />
+      </map>
+    </option>
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../rain-check-doc" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

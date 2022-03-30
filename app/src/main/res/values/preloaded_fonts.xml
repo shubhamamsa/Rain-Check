@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/advent_pro_light</item>
+        <item>@font/bubbler_one</item>
+        <item>@font/cabin</item>
+        <item>@font/didact_gothic</item>
+        <item>@font/gudea</item>
+        <item>@font/gudea_bold</item>
+        <item>@font/josefin_slab_thin</item>
+        <item>@font/pontano_sans</item>
+        <item>@font/quicksand_light</item>
+        <item>@font/six_caps</item>
+        <item>@font/work_sans_light</item>
+        <item>@font/work_sans_medium</item>
+    </array>
+</resources>

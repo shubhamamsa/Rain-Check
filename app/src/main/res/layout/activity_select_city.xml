@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/night_bg_3"
+    tools:context=".SelectCity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
+            android:textSize="25sp"
+            android:textColor="#e6e6e6"
+            android:text="Rain Check"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            app:srcCompat="@drawable/weather_icon" />
+        <LinearLayout
+            android:id="@+id/form_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+                <EditText
+                    android:id="@+id/cityName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="3"
+                    android:hint="Enter a place"
+                    android:textColorHint="#ffffff"
+                    android:backgroundTint="#ffffff" />
+                <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#413359"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#e6e6e6"
+                    android:text="Search" />
+            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#e6e6e6"
+                    android:text="OR" />
+            <Button
+                android:id="@+id/btnGetLocation"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:backgroundTint="#413359"
+                android:layout_marginTop="20dp"
+                android:textColor="#e6e6e6"
+                android:text="CURRENT LOCATION" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/loading_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="130dp"
+            android:visibility="gone" >
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#413359"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/admin_page"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rect_border"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="#e6e6e6"
+        android:text="ADMIN LOGIN" />
+
+</RelativeLayout>

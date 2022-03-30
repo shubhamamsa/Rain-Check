@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WeatherDescription"
+    android:background="@drawable/night_bg_5"
+    android:scaleType="fitXY"
+    android:adjustViewBounds="true"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp"
+    android:scrollbars="none" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="300dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-5dp"
+                android:fontFamily="@font/gudea"
+                android:text="Hyderabad"
+                android:textColor="#e6e6e6"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/location"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="-30dp"
+                android:fontFamily="@font/quicksand_light"
+                android:text="25°"
+                android:textColor="#e6e6e6"
+                android:textSize="135sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="-12dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+            <ImageView
+                android:id="@+id/weather_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_sun"
+                app:tint="#e6e6e6"/>
+
+                <TextView
+                    android:id="@+id/weather_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/gudea"
+                    android:text="Sunny"
+                    android:textColor="#e6e6e6"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/sunny_gradient">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:weightSum="3"
+            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/today_sch"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TODAY"
+                android:textColor="#e6e6e6"
+                android:fontFamily="@font/gudea"/>
+
+            <ImageView
+                android:id="@+id/today_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/today_sch"
+                android:layout_marginTop="7dp"
+                app:srcCompat="@drawable/ic_sun"
+                app:tint="#e6e6e6" />
+
+            <TextView
+                android:id="@+id/today_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/today_sch"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/today_icon"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="25°"
+                android:textColor="#e6e6e6"
+                android:textSize="27sp" />
+            <TextView
+                android:id="@+id/today_real_feel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/today_icon"
+                android:layout_marginLeft="5dp"
+                android:text="RealFeel: 23°"
+                android:textSize="13sp"
+                android:textColor="#e6e6e6"
+                android:fontFamily="@font/gudea" />
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#e6e6e6" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="10dp">
+            <TextView
+                android:id="@+id/tom_sch"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOM"
+                android:textColor="#e6e6e6"
+                android:fontFamily="@font/gudea" />
+            <ImageView
+                android:id="@+id/tom_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="7dp"
+                android:layout_below="@+id/tom_sch"
+                app:srcCompat="@drawable/ic_sun"
+                app:tint="#e6e6e6"/>
+
+            <TextView
+                android:id="@+id/tom_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tom_sch"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/tom_icon"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="19°"
+                android:textColor="#e6e6e6"
+                android:textSize="27sp" />
+            <TextView
+                android:id="@+id/tom_real_feel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tom_icon"
+                android:layout_marginLeft="5dp"
+                android:text="RealFeel: 20°"
+                android:textSize="13sp"
+                android:textColor="#e6e6e6"
+                android:fontFamily="@font/gudea" />
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#e6e6e6" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="10dp">
+            <TextView
+                android:id="@+id/dtom_sch"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FRI"
+                android:textColor="#e6e6e6"
+                android:fontFamily="@font/gudea" />
+
+            <ImageView
+                android:id="@+id/dtom_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/dtom_sch"
+                android:layout_marginTop="7dp"
+                app:srcCompat="@drawable/ic_sun"
+                app:tint="#e6e6e6" />
+
+            <TextView
+                android:id="@+id/dtom_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dtom_sch"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/dtom_icon"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="23°"
+                android:textColor="#e6e6e6"
+                android:textSize="27sp" />
+            <TextView
+                android:id="@+id/dtom_real_feel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dtom_icon"
+                android:layout_marginLeft="5dp"
+                android:text="RealFeel: 21°"
+                android:textSize="13sp"
+                android:textColor="#e6e6e6"
+                android:fontFamily="@font/gudea" />
+        </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp" >
+
+            <TextView
+                android:id="@+id/detail_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="15dp"
+                android:text="Today's Details"
+                android:textColor="#eaeaea"
+                android:textSize="17sp"
+                android:fontFamily="@font/gudea" />
+
+            <RelativeLayout
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/detail_header" >
+
+                <ImageView
+                    android:id="@+id/detail_sun_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    app:srcCompat="@drawable/ic_sun"
+                    app:tint="#e6e6e6" />
+
+                <TextView
+                    android:id="@+id/sun_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/gudea"
+                    android:text="12 hrs\n19 mins"
+                    android:textColor="#e6e6e6" />
+                <TextView
+                    android:id="@+id/detail_rise_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rise"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/detail_sun_icon"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+                <TextView
+                    android:id="@+id/sun_rise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="06:49"
+                    android:textSize="18sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/detail_sun_icon"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/detail_rise_text"
+                    android:textColor="#e6e6e6" />
+                <TextView
+                    android:id="@+id/sun_set"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18:08"
+                    android:textSize="18sp"
+                    android:paddingTop="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/detail_rise_text"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+            </RelativeLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="95dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/detail_header"
+                android:background="#e6e6e6" />
+
+            <RelativeLayout
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/detail_header"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:id="@+id/detail_moon_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    app:srcCompat="@drawable/ic_moon"
+                    app:tint="#e6e6e6" />
+
+                <TextView
+                    android:id="@+id/moon_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="11 hrs\n19 mins"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:id="@+id/detail_rise_text_night"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_moon_icon"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Rise"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:id="@+id/moon_rise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_moon_icon"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:text="16:49"
+                    android:textSize="18sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_rise_text_night"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Set"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea"/>
+
+                <TextView
+                    android:id="@+id/moon_set"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_rise_text_night"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:text="04:34"
+                    android:textSize="18sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="CURRENT CONDITION"
+                android:textSize="12sp"
+                android:textColor="#f0f0f0"
+                android:fontFamily="@font/gudea" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Temperature"
+                    android:textSize="14sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:id="@+id/current_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="16°"
+                    android:textSize="18sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="#e6e6e6" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="RealFeel"
+                    android:textSize="14sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:id="@+id/current_real_feel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="18°"
+                    android:textSize="18sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="#e6e6e6" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Wind"
+                    android:textSize="14sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:id="@+id/current_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="N 4 km/h"
+                    android:textSize="18sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="#e6e6e6" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Humidity"
+                    android:textSize="14sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+
+                <TextView
+                    android:id="@+id/current_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="56%"
+                    android:textSize="18sp"
+                    android:textColor="#e6e6e6"
+                    android:fontFamily="@font/gudea" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/upcomingDayForecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="UPCOMING DAYS"
+                android:textSize="12sp"
+                android:textColor="#f0f0f0"
+                android:fontFamily="@font/gudea" />
+        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
