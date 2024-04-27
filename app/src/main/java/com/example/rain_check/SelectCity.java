@@ -51,6 +51,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -64,18 +65,15 @@ public class SelectCity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.rain_check.DATA";
     private String lat, lon, name;
 
-    final private String accuweather_api_key = "8kQdPPmGyBEyksP57PE0Y3NmUbIBQOpc";
-    final private String data_api_key = "nZhvEJPC6yO5a8ZJfqY7rlOupHAOgaqFnfOfO2G3ppIEzjnbeXWmdJjtmGGOs1T0";
-    final private String data_app_id = "data-pjzvj";
+    final private String accuweather_api_key = BuildConfig.ACCUWEATHER_API_KEY;
+    final private String data_api_key = BuildConfig.DATA_API_KEY;
+    final private String data_app_id = BuildConfig.DATA_API_ID;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_city);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            getWindow().setStatusBarColor(Color.parseColor("#111230"));
-        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            getWindow().setStatusBarColor(Color.parseColor("#111230"));
+        getWindow().setStatusBarColor(Color.parseColor("#111230"));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -122,7 +120,6 @@ public class SelectCity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-//                Toast.makeText(SelectCity.this,, Toast.LENGTH_SHORT).show();
 
         });
 
@@ -316,14 +313,15 @@ public class SelectCity extends AppCompatActivity {
         cityName = cityName.toLowerCase(Locale.ROOT);
         Intent weatherDisp = new Intent(this, WeatherDescription.class);
         OkHttpClient client = new OkHttpClient().newBuilder().build();
-        MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n    \"collection\":\"weather_data\",\n    \"database\":\"rain_meter_data\",\n    \"dataSource\":\"RainCheckCluster\",\n    \"filter\": {\"City\":\""+cityName+"\"}\n\n}");
+
+        String body = "{\n    \"collection\":\"weather_data\",\n    \"database\":\"rain_meter_data\",\n    \"dataSource\":\"Cluster0\",\n    \"filter\": {\"City\":\""+cityName+"\"}\n\n}";
+        RequestBody requestBody = RequestBody.create(body.getBytes(StandardCharsets.UTF_8));
         okhttp3.Request request = new okhttp3.Request.Builder()
-                .url("https://data.mongodb-api.com/app/"+data_app_id+"/endpoint/data/beta/action/findOne")
-                .method("POST", body)
+                .url("https://ap-south-1.aws.data.mongodb-api.com/app/"+data_app_id+"/endpoint/data/v1/action/findOne")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Access-Control-Request-Headers", "*")
                 .addHeader("api-key", data_api_key)
+                .post(requestBody)
                 .build();
         Handler mHandler = new Handler(Looper.getMainLooper());
         client.newCall(request).enqueue(new Callback() {

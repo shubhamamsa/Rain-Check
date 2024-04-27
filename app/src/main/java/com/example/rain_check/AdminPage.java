@@ -1,5 +1,6 @@
 package com.example.rain_check;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -30,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -41,10 +43,10 @@ import okhttp3.RequestBody;
 
 public class AdminPage extends AppCompatActivity {
 
-    final private String mapbox_api_key = "pk.eyJ1Ijoic29uYW1zaW5naDI1IiwiYSI6ImNsMGZrYTE0ajB0aGczZGxmZW5ha2F6YncifQ.BohJ7FLeqa2EOdPSqs3RAw";
-    final private String accuweather_api_key = "8kQdPPmGyBEyksP57PE0Y3NmUbIBQOpc";
-    final private String data_api_key = "nZhvEJPC6yO5a8ZJfqY7rlOupHAOgaqFnfOfO2G3ppIEzjnbeXWmdJjtmGGOs1T0";
-    final private String data_app_id = "data-pjzvj";
+    final private String mapbox_api_key = BuildConfig.MAPBOX_API_KEY;
+    final private String accuweather_api_key = BuildConfig.ACCUWEATHER_API_KEY;
+    final private String data_api_key = BuildConfig.DATA_API_KEY;
+    final private String data_app_id = BuildConfig.DATA_API_ID;
     String lat = null, lon = null, name = null;
 
     @Override
@@ -62,7 +64,7 @@ public class AdminPage extends AppCompatActivity {
                 lat = null;
                 lon = null;
                 name = null;
-                if(cityName.isPerformingCompletion() == false) {
+                if(!cityName.isPerformingCompletion()) {
                     if (s.length() > 2) {
 
                         String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + s + ".json?access_token=" + mapbox_api_key;
@@ -84,7 +86,6 @@ public class AdminPage extends AppCompatActivity {
 
                                         cityName.setOnItemClickListener((adapterView, view, i, l) -> {
                                             String value = (String) adapterView.getItemAtPosition(i);
-//                                            cityName.setText("");
                                             try {
                                                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                                                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
@@ -255,46 +256,42 @@ public class AdminPage extends AppCompatActivity {
         Log.i("message", formattedData);
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n    \"collection\":\"weather_data\",\n    \"database\":\"rain_meter_data\",\n    \"dataSource\":\"RainCheckCluster\",\n    \"document\": "+formattedData+"\n\n}");
+        String body = "{\n    \"collection\":\"weather_data\",\n    \"database\":\"rain_meter_data\",\n    \"dataSource\":\"Cluster0\",\n    \"document\": "+formattedData+"\n\n}";
+        RequestBody requestBody = RequestBody.create(body.getBytes(StandardCharsets.UTF_8));
         okhttp3.Request request = new okhttp3.Request.Builder()
-                .url("https://data.mongodb-api.com/app/"+data_app_id+"/endpoint/data/beta/action/insertOne")
-                .method("POST", body)
+                .url("https://ap-south-1.aws.data.mongodb-api.com/app/"+data_app_id+"/endpoint/data/v1/action/insertOne")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Access-Control-Request-Headers", "*")
                 .addHeader("api-key", data_api_key)
+                .post(requestBody)
                 .build();
+        Log.i("message", request.toString());
         Handler mHandler = new Handler(Looper.getMainLooper());
+
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(AdminPage.this, "Failed to insert data", Toast.LENGTH_SHORT).show();
-                        endLoading();
-                    }
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                Log.i("message", e.getMessage());
+                mHandler.post(() -> {
+                    Toast.makeText(AdminPage.this, "Failed to insert data", Toast.LENGTH_SHORT).show();
+                    endLoading();
                 });
             }
 
             @Override
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
                 if(response.isSuccessful()) {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            endLoading();
-                            Toast.makeText(AdminPage.this, "Successfully inserted data", Toast.LENGTH_SHORT).show();
-                        }
+                    mHandler.post(() -> {
+                        endLoading();
+                        Toast.makeText(AdminPage.this, "Successfully inserted data", Toast.LENGTH_SHORT).show();
                     });
                 }
                 else {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            endLoading();
-                            Toast.makeText(AdminPage.this, "Failed to insert data", Toast.LENGTH_SHORT).show();
-                        }
+                    Log.e("message", response.body().string());
+                    mHandler.post(() -> {
+                        endLoading();
+                        Toast.makeText(AdminPage.this, "Failed to insert data", Toast.LENGTH_SHORT).show();
                     });
                 }
             }

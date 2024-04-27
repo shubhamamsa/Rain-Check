@@ -62,17 +62,9 @@ public class PopupAdminLogin extends Activity {
         // Dim the background
         View container;
         if (popupWindow.getBackground() == null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                container = (View) popupWindow.getContentView().getParent();
-            } else {
-                container = popupWindow.getContentView();
-            }
+            container = (View) popupWindow.getContentView().getParent();
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                container = (View) popupWindow.getContentView().getParent().getParent();
-            } else {
-                container = (View) popupWindow.getContentView().getParent();
-            }
+            container = (View) popupWindow.getContentView().getParent().getParent();
         }
         Context context = popupWindow.getContentView().getContext();
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -93,13 +85,11 @@ public class PopupAdminLogin extends Activity {
             String username = edtUsername.getText().toString();
             String password = edtPassword.getText().toString();
 
-            if(username.equals("admin") && password.equals("password")) {
+            if(username.equals(BuildConfig.ADMIN_USERNAME) && password.equals(BuildConfig.ADMIN_PASSWORD)) {
                 Intent adminArea = new Intent(context, AdminPage.class);
                 context.startActivity(adminArea);
                 finish();
             }
-//            else
-//                Toast.makeText(PopupAdminLogin.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
         });
     }
 }
